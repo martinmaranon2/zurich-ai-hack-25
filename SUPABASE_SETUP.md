@@ -23,11 +23,12 @@ This document explains how to set up Supabase integration for the UBS DialogueIQ
 ### 2. Set Up Database Schema
 
 1. In your Supabase project dashboard, go to the SQL Editor
-2. Copy the contents of `supabase-schema.sql` from this repository
+2. Obtain the compatible `supabase-schema.sql` from the project maintainers; it is not checked into this repository. Match the table fields to the queries in `hooks/` before applying it.
 3. Paste it into the SQL Editor
 4. Click "Run" to execute the schema creation
 
 This will create:
+
 - `clients` table with all client information
 - `conversations` table for client conversations
 - `actions` table for client actions/tasks
@@ -64,6 +65,7 @@ npm install @supabase/supabase-js
 ### 6. Test the Integration
 
 1. Start your development server:
+
    ```bash
    npm run dev
    ```
@@ -76,26 +78,34 @@ npm install @supabase/supabase-js
 ### Tables Created
 
 #### `clients`
+
 Stores all client information including:
+
 - Personal details (name, email, age, etc.)
 - Portfolio information
 - Performance metrics
 - Risk profile and preferences
 
 #### `conversations`
+
 Stores client conversation history:
+
 - Call/meeting transcripts
 - Summaries and notes
 - Duration and type
 
 #### `actions`
+
 Stores client action items:
+
 - Task descriptions
 - Priority levels
 - Due dates and status
 
 #### `upcoming_events`
+
 Stores client upcoming events:
+
 - Meeting dates
 - Event titles
 
@@ -112,16 +122,19 @@ The integration provides:
 ## Hooks Available
 
 ### `useClients()`
+
 - Fetches all clients
 - Provides CRUD operations for clients
 - Handles loading and error states
 
 ### `useConversations(clientId?)`
+
 - Fetches conversations for a specific client or all clients
 - Provides CRUD operations for conversations
 - Handles loading and error states
 
 ### `useActions(clientId?)`
+
 - Fetches actions for a specific client or all clients
 - Provides CRUD operations for actions
 - Includes helper methods for filtering by status/priority
